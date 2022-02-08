@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="add">开始计数</button>
+<input type="number" value=0 id="number">
+<button id="stop">停止计数</button>
+<script type="application/javascript">
+
+    let intervalResult;
+    document.getElementById("add").addEventListener("click", function () {
+        intervalResult = execute(add, 1000);
+    });
+    document.getElementById("stop").addEventListener("click", function () {
+        stop();
+    });
+
+    function execute(method) {
+        return setInterval(method, 1000);
+    }
+
+    function add() {
+        let element = document.getElementById("number");
+        let result = parseInt(element.value);
+        element.value = result + 1;
+    }
+
+    function stop() {
+        clearInterval(intervalResult);
+    }
+</script>
+
+</body>
+</html>
