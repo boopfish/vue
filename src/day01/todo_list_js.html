@@ -27,7 +27,7 @@
 
         button {
             Padding: 10px;
-            width: 20%;
+            width: 25%;
         }
 
         ul {
@@ -76,8 +76,6 @@
             background-color: #f44336;
             color: white;
         }
-
-
     </style>
 </head>
 <body>
@@ -90,7 +88,7 @@
     <ul>
         <li class="is-checked">唱</li>
         <li>跳</li>
-        <li>Rap</li>
+        <li class="is-checked">Rap</li>
         <li>篮球</li>
     </ul>
 
@@ -121,6 +119,7 @@
     document.getElementById("add").addEventListener("click", function () {
         let element = add()
         document.getElementsByTagName("ul")[0].appendChild(element);
+        document.getElementsByTagName("input")[0].value = "";
     })
 
     //增加待办事项
@@ -153,8 +152,6 @@
             event.target.parentElement.style.display = "none";
         })
     }
-
-
 </script>
 </body>
 </html>
