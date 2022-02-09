@@ -78,7 +78,7 @@
     <div class="inner-header">
         <h2>My To Do List</h2>
         <input type="text" placeholder="Title...">
-        <button type="button">Add</button>
+        <button type="button" id="add">Add</button>
     </div>
     <ul>
         <li>唱</li>
@@ -98,6 +98,43 @@
         span.appendChild(txt);
         elements[i].appendChild(span);
     }
+
+    // 增加待办事项
+    document.getElementById("add").addEventListener("click", function () {
+        let element = add()
+        document.getElementsByTagName("ul")[0].appendChild(element);
+    })
+
+    //增加待办事项
+    function add() {
+        //先检查内容是否为空
+        let inputElement = document.getElementsByTagName("input")[0];
+        if (inputElement.value) {
+            console.log(inputElement.value);
+            let liElement = document.createElement("li");
+            liElement.innerText = inputElement.value;
+            let span = document.createElement("span");
+            let txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            liElement.appendChild(span);
+            //给span添加点击事件
+            span.addEventListener("click", function () {
+                span.parentElement.style.display = "none";
+            })
+            return liElement;
+        } else {
+            alert("填点啥呀")
+        }
+    }
+    //点击Close后关闭待办事项
+    let closeElements = document.getElementsByClassName("close");
+    for (let i = 0; i < closeElements.length; i++) {
+        closeElements[i].addEventListener("click", function () {
+            closeElements[i].parentElement.style.display = "none";
+        })
+    }
+
 
 </script>
 </body>
