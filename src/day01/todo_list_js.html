@@ -58,6 +58,13 @@
             background: #f9f9f9;
         }
 
+        ul li.is-checked {
+            background: #888;
+            color: #fff;
+            text-decoration: line-through;
+
+        }
+
         .close {
             position: absolute;
             right: 0;
@@ -81,7 +88,7 @@
         <button type="button" id="add">Add</button>
     </div>
     <ul>
-        <li>唱</li>
+        <li class="is-checked">唱</li>
         <li>跳</li>
         <li>Rap</li>
         <li>篮球</li>
@@ -97,6 +104,17 @@
         span.className = "close";
         span.appendChild(txt);
         elements[i].appendChild(span);
+        //给每一个li添加事件
+        elements[i].addEventListener("click", function (event) {
+            //检查元素是否已经被标记
+            /*if (elements[i].className === "is-checked") {
+                elements[i].className = "";
+            } else {
+                elements[i].className = "is-checked";
+            }*/
+            event.target.classList.toggle("is-checked");
+
+        })
     }
 
     // 增加待办事项
@@ -127,11 +145,12 @@
             alert("填点啥呀")
         }
     }
+
     //点击Close后关闭待办事项
     let closeElements = document.getElementsByClassName("close");
     for (let i = 0; i < closeElements.length; i++) {
-        closeElements[i].addEventListener("click", function () {
-            closeElements[i].parentElement.style.display = "none";
+        closeElements[i].addEventListener("click", function (event) {
+            event.target.parentElement.style.display = "none";
         })
     }
 
